@@ -36,10 +36,33 @@ Feature: Registro de Dueños de Mascotas
       
   Scenario: Buscar un dueño de mascota por apellido
     Given el veterinario está en la página de búsqueda de dueños de mascotas
-    When el veterinario ingresa "Rodriquez" en el campo Last Name
+    When el veterinario ingresa "<Last Name>" en el campo Last Name
     And el veterinario hace clic en el botón Find Owner
     Then el sistema debería dirigir a la pantalla de detalles del dueño de mascota
-    And muestra el texto "Eduardo Rodriquez" en el campo Name
-    And muestra el texto "2693 Commerce St." en el campo Address
-    And muestra el texto "McFarland" en el campo City
-	And muestra el texto "6085558763" en el campo Telephone
+    And muestra el texto "<Name>" en el campo Name
+    And muestra el texto "<Address>" en el campo Address
+    And muestra el texto "<City>" en el campo City
+	And muestra el texto "<Telephone>" en el campo Telephone
+	
+	Examples:
+      | Last Name  | Name              | Address           | City        | Telephone   |
+      | Rodriquez  | Eduardo Rodriquez | 2693 Commerce St. | McFarland   | 6085558763  |
+
+  Scenario: Editar ciudad y telefono de dueño de mascota
+    Given el veterinario está en la página de búsqueda de dueños de mascotas
+    When el veterinario ingresa "<Last Name>" en el campo Last Name
+    And el veterinario hace clic en el botón Find Owner
+    Then el sistema debería dirigir a la pantalla de detalles del dueño de mascota
+    When el veterinario hace clic en el botón Edit Owner
+    When el veterinario ingresa "<City>" en el campo City
+    And el veterinario ingresa "<Telephone>" en el campo Telephone
+    When el veterinario hace clic en el botón Update Owner
+    Then el sistema debería dirigir a la pantalla de detalles del dueño de mascota
+    And muestra el texto "<Name>" en el campo Name
+    And muestra el texto "<Address>" en el campo Address
+    And muestra el texto "<City>" en el campo City
+	And muestra el texto "<Telephone>" en el campo Telephone
+	
+	Examples:
+      | Last Name  | Name              | Address           | City         | Telephone   |
+      | Rodriquez  | Eduardo Rodriquez | 2693 Commerce St. | McFarland2   | 1334267890  |

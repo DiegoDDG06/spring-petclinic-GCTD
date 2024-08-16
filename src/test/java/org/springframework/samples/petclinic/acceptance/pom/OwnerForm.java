@@ -26,6 +26,10 @@ public class OwnerForm {
 
 	private static final String BTN_ADD_OWNER = "css:#add-owner-form button";
 
+	private static final String BTN_EDIT_OWNER = "xpath:/html/body/div/div/a[1]";
+
+	private static final String BTN_UPDATE_OWNER = "xpath://*[@id=\"add-owner-form\"]//button";
+
 	private static final String FIELD_ERROR_MESSAGE = "xpath://input[@id='%s']/../../span[@class='help-inline']";
 
 	private final Browser browser;
@@ -57,6 +61,14 @@ public class OwnerForm {
 
 	public void addOwner() {
 		this.browser.click(BTN_ADD_OWNER);
+	}
+
+	public void editOwner() {
+		this.browser.click(BTN_EDIT_OWNER);
+	}
+
+	public void updateOwner() {
+		this.browser.click(BTN_UPDATE_OWNER);
 	}
 
 	public String getFieldErrorMessage(String field) {

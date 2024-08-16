@@ -92,6 +92,20 @@ public class OwnerSteps {
 	}
 
 	/**
+	 * Editar Owner
+	 */
+
+	@When("el veterinario hace clic en el botón Edit Owner")
+	public void editOwner() {
+		site.ownerForm.editOwner();
+	}
+
+	@When("el veterinario hace clic en el botón Update Owner")
+	public void updateOwner() {
+		site.ownerForm.updateOwner();
+	}
+
+	/**
 	 * Mensaje de error bajo un campo del formulario
 	 */
 	@Then("el sistema debería mostrar bajo el campo {string} el mensaje de error {string}")

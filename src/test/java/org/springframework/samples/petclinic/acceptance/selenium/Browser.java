@@ -145,6 +145,7 @@ public class Browser {
 	 * @throws IllegalStateException si el tipo de selector no está soportado
 	 */
 	public void write(String selector, String value, Object... params) {
+		find(selector, params).clear();
 		find(selector, params).sendKeys(value);
 	}
 
